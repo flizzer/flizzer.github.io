@@ -1,6 +1,7 @@
 # Welcome to [my](https://twitter.com/AzureBri) blog!  
 
-Here you'll find my musings on all things Azure-related.
+My musings, and sometimes confessions, on the journey to becoming an Azure expert.
+On twitter at @AzureBri
 
 
 
