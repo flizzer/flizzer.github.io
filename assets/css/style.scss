@@ -2,9 +2,9 @@
 ---
 
 @import "{{ site.theme }}";
-header a.githubbutton {
+header a.twitterbutton {
     position: absolute;
     top: 0;
     right: 0;
-    background:transparent url(../images/github-button.png) 0 0 no-repeat
+    background:transparent url(../images/twitterbutton.png) 0 0 no-repeat
 }
