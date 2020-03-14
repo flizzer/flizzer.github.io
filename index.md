@@ -1,5 +1,5 @@
 # Azure Brian's Blog
-On Twitter at: [@azurebri](https://twitter.com/AzureBri)
+For updates follow [@azurebri](https://twitter.com/AzureBri) on Twitter
 
 
 
