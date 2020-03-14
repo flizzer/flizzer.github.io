@@ -25,11 +25,11 @@
           <a href="{{ site.github.repository_url }}" class="button"><small>View project on</small> GitHub</a>
         {% endif %}
         {% if site.github.is_user_page %}
-          <a href="{{ site.github.owner_url }}" class="button"><small>Follow me on</small> Twitter</a>
+          <a href="{{ site.github.owner_url }}" class="githubbutton"><small>Follow me on</small> GitHub</a>
         {% endif %}
-        <!--{% if site.github.is_user_page %}
-          <a href="{{ site.github.owner_url }}" class="button"><small>Follow me on</small> GitHub</a>
-        {% endif %}-->
+        {% if site.github.is_user_page %}
+          <a href="{{ site.github.owner_url }}" class="twitterbutton"><small>Follow me on</small> Twitter</a>
+        {% endif %}
       </div>
     </header>
 
