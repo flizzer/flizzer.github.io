@@ -1,4 +1,5 @@
-# Welcome to [my](https://twitter.com/AzureBri) blog!  
+# Azure Brian's Blog
+[@azurebri](https://twitter.com/AzureBri)
 
 
 
