@@ -1,9 +1,4 @@
 # Azure Brian's Blog
-For updates follow [@azurebri](https://twitter.com/AzureBri) on Twitter
-
-
-
-
 
 # !!!CURRENTLY UNDER CONSTRUCTION!!!  
 
