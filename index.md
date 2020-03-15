@@ -1,5 +1,5 @@
 # Azure Brian's Blog
 
-# !!!CURRENTLY UNDER CONSTRUCTION!!!  
+#!!!CURRENTLY UNDER CONSTRUCTION!!!  
 
 Please excuse our mess while we get things setup and check back soon for some interesting Azure-based content!
