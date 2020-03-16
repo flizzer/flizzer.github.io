@@ -43,10 +43,9 @@
                     {{ post.title | escape }}
                   </a>
               </h3>
-              {%- if site.show_description and post.description  -%}
                 <p class="post-meta-description">{{ post.description }}</p>
-              {%- endif -%}
-                <p class="post-meta">{{ post.date | date: date_format }}</p>
+                <p class="post-meta">{{ post.date }}</p>
+                <!--p class="post-meta">{{ post.date | date: date_format }}</p-->
               <!--li>
                   <a href="{{ post.url }}">{{ post.title }}</a>
                   <p class="post-meta-description">{{ post.description }}</p>
