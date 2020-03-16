@@ -1,8 +1,9 @@
 ---
 layout: post
 title: Hello World Title
-categories: [general]
-tags: [test]
+category: general
+tags: test
+date: 2020-03-14
 ---
 
 # Hello World!!!
