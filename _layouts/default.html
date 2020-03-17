@@ -34,7 +34,9 @@
       <div class="inner clearfix">
         <section id="main-content">
           {{ content }}
-
+          {% if page.url == 'https://azurebrian.com' %}
+              {%- include post_list.html -%}
+          {% endif %}
         </section>
 
         <aside id="sidebar">
