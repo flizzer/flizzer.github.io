@@ -9,6 +9,6 @@ date: 2020-03-14
 
 # Hello World!!!
 
-## This is my description
+## This is an h2 header
 
 This is my first post!
