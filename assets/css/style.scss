@@ -2,17 +2,23 @@
 ---
 
 @import "{{ site.theme }}";
-header a.twitterbutton {
+/*header a.twitterbutton {
     position: relative;
     top: 0;
     right: 0;
     background:transparent url(../../images/twitter.png) 0 0 no-repeat
-}
+}*/
 
 header img {
     position: absolute;
     top: 0;
     right: 0;
-    
 }
 
+body header {
+    padding-top: 40px;
+    padding-bottom: 40px;
+    font-family: 'Architects Daughter', 'Helvetica Neue', Helvetica, Arial, serif;
+    background: #2e7bcf url(../images/header-bg.jpg) 0 0 repeat-x;
+    border-bottom: solid 1px #275da1;
+}
