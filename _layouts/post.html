@@ -29,14 +29,14 @@ layout: default
         • {% include reading_time.html -%}
     </p>
 
-    <p class="category-tags"><i class="fa fa-tags category-tags-icon"></i></i> 
+    <p class="category-tags"><i class="fa fa-layer-group category-tags-icon"></i></i> 
       {% for category in  page.categories  %}
         <a class="category-tags-link" href="{{site.baseurl}}/categories/#{{category|slugize}}">{{category}}</a>
         {% unless forloop.last %}&nbsp;{% endunless %}
       {% endfor %}
       </p>
 
-    <p class="category-tags"><i class="fas fa-hashtag category-tags-icon"></i></i> 
+    <p class="category-tags"><i class="fa fa-tags category-tags-icon"></i></i> 
       {% for tag in page.tags  %}
         <a class="category-tags-link" href="{{site.baseurl}}/tags/#{{tag|slugize}}">{{tag}}</a>
         {% unless forloop.last %}&nbsp;{% endunless %}
