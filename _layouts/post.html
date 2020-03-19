@@ -33,13 +33,18 @@ layout: default
         <a class="category-tags-link" href="{{site.baseurl}}/categories/#{{category|slugize}}">{{category}}</a>
         {% unless forloop.last %}&nbsp;{% endunless %}
       {% endfor %}
-      </p>
-    <p class="category-tags"><i class="fas fa-tags category-tags-icon"></i></i> 
+      <i class="fas fa-tags category-tags-icon"></i> 
       {% for tag in page.tags  %}
         <a class="category-tags-link" href="{{site.baseurl}}/tags/#{{tag|slugize}}">{{tag}}</a>
         {% unless forloop.last %}&nbsp;{% endunless %}
       {% endfor %}
-      </p>
+    </p>
+    <!--p class="category-tags"><i class="fas fa-tags category-tags-icon"></i></i> 
+      {% for tag in page.tags  %}
+        <a class="category-tags-link" href="{{site.baseurl}}/tags/#{{tag|slugize}}">{{tag}}</a>
+        {% unless forloop.last %}&nbsp;{% endunless %}
+      {% endfor %}
+      </p-->
   </header>
 
   <div class="post-content e-content" itemprop="articleBody">
