@@ -35,23 +35,14 @@ layout: default
         {% unless forloop.last %}&nbsp;{% endunless %}
       {% endfor %}
       </p>
-
+  <br>
     <p class="category-tags"><i class="fas fa-tags category-tags-icon"></i></i> 
       {% for tag in page.tags  %}
         <a class="category-tags-link" href="{{site.baseurl}}/tags/#{{tag|slugize}}">{{tag}}</a>
         {% unless forloop.last %}&nbsp;{% endunless %}
       {% endfor %}
       </p>
-
-  <!--Not sure I need this code - bhd>
-  {% if page.layout == 'notebook' %}
-      {% if page.badges or page.badges == nil %}
-        <div class="pb-5 d-flex flex-wrap flex-justify-end">
-          {% include notebook_github_link.html %}{% include notebook_colab_link.html %}
-        </div>
-      {% endif -%}
-   {% endif -%}
-  </header-->
+  </header>
 
   <div class="post-content e-content" itemprop="articleBody">
     {{ content | toc  }}
