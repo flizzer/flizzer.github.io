@@ -23,8 +23,6 @@ use_math:
 # Add your Google Analytics ID here if you have one and want to use it
 google_analytics:
 
-permalink: /:categories/:title/
-
 # this setting allows you to keep pages organized in the _pages folder
 include:
   - _pages
