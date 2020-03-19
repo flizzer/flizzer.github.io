@@ -28,7 +28,6 @@ layout: default
       {%- endif %}
         • {% include reading_time.html -%}
     </p>
-    <br>
     <p class="category-tags"><i class="fas fa-layer-group category-tags-icon"></i></i> 
       {% for category in  page.categories  %}
         <a class="category-tags-link" href="{{site.baseurl}}/categories/#{{category|slugize}}">{{category}}</a>
