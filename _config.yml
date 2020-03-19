@@ -25,6 +25,10 @@ google_analytics:
 
 permalink: /:categories/:title/
 
+# this setting allows you to keep pages organized in the _pages folder
+include:
+  - _pages
+
 # Everything below here can be ignored, unless you want to change the theme entirely
 theme: jekyll-theme-architect
 plugins:
