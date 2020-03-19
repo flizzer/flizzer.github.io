@@ -36,7 +36,7 @@ layout: default
       {% endfor %}
       </p>
 
-    <p class="category-tags"><i class="fa fa-tags category-tags-icon"></i></i> 
+    <p class="category-tags"><i class="fas fa-hashtag category-tags-icon"></i></i> 
       {% for tag in page.tags  %}
         <a class="category-tags-link" href="{{site.baseurl}}/tags/#{{tag|slugize}}">{{tag}}</a>
         {% unless forloop.last %}&nbsp;{% endunless %}
