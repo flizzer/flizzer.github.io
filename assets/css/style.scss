@@ -9,7 +9,7 @@
     background:transparent url(../../images/twitter.png) 0 0 no-repeat
 }*/
 
-@media screen
+@media screen and (min-width: 900px)
 header img {
     position: absolute;
     top: 0;
