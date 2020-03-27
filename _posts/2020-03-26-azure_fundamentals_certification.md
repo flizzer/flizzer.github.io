@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Launch!!!
-description: The path to my first Azure certification
+description: Azure Brian's Blog Launch
 author: Brian Davis
 categories: general
 tags: blog
