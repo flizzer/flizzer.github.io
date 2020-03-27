@@ -18,7 +18,7 @@ Greetings!  I wanted to write a few lines to capture the milestone represented b
 - [John Savill](https://savilltech.com)
 - [Troy Hunt](https://www.troyhunt.com)
 
-I respect each of the above's expertise first and foremost, and have garnered so much knowledge from their blog posts, Pluralsight articles, newsletters, and Twitter accounts.  I also admire greatly their professionalism in the way they brand and market themselves.  That's the "blueprint", pardon the pun :smirk:, I'm shooting for here.  I hope that as I learn I can give back to the community, as they have.
+I respect each of the above's expertise first and foremost, and have garnered so much knowledge from their blog posts, Pluralsight courses, newsletters, and Twitter accounts.  I also admire greatly their professionalism in the way they brand and market themselves.  That's the "blueprint", pardon the pun :smirk:, I'm shooting for here.  I hope that as I learn I can give back to the community, as they have.
 
 So, please stay tuned for upcoming posts on topics such as:
 
@@ -26,7 +26,7 @@ So, please stay tuned for upcoming posts on topics such as:
 - Azure Network Troubleshooting Tools
 - Hybrid connections with VNAs (Virtual Network Appliances)
 
-If you want to be informed of these posts as they're published, be sure to follow me on Twitter and link to the Atom feed (buttons for both are in the sidebar to the right).
+If you want to be informed of these posts as they're published, be sure to follow me on Twitter and link to the Atom feed (buttons for both are in the sidebar to the right).  Also, if there are any topics you'd like to see covered, feel free to leave a comment below (Github account required).
 
 Thanks and I look forward to sharing more soon!
 
