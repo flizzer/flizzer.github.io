@@ -34,6 +34,7 @@ plugins:
   - jekyll-gist
   - jekyll-octicons
   - jekyll-github-metadata
+  - jemoji
 
 titles_from_headings:
   enabled:     true
