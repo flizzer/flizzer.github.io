@@ -1,12 +1,33 @@
 ---
 layout: post
-title: The Path to Azure Fundamentals (AZ-900) Certification
+title: Launch!!!
 description: The path to my first Azure certification
 author: Brian Davis
-categories: training
-tags: certification
+categories: general
+tags: blog
 date: 2020-03-26
 comments: true
-published: false
+published: true
 ---
 
+Greetings!  I wanted to write a few lines to capture the milestone represented by this post -- it's the first one!  I'm excited about what this means in terms of my journey in this space, but I do hope it will be a resource for others who are looking for good, helpful Azure-related content as well.  Just a quick shout out to some of the folks that have inspired me to launch this blog:
+
+- [Tim Warner](https://techtrainertim.com)
+- [Chris Pietschmann](https://build5nines.com)
+- [Thomas Maurer](https://www.thomasmaurer.ch)
+- [John Savill](https://savilltech.com)
+- [Troy Hunt](https://www.troyhunt.com)
+
+I respect each of the above's expertise first and foremost, and have garnered so much knowledge from their blog posts, Pluralsight articles, newsletters, and Twitter accounts.  I also admire greatly their professionalism in the way they brand and market themselves.  That's the "blueprint", pardon the pun :smirk:, I'm shooting for here.  I hope that as I learn I can give back to the community, as they have.
+
+So, please stay tuned for upcoming posts on topics such as:
+
+- AZ-900 Azure Fundamentals Certification
+- Azure Network Troubleshooting Tools
+- Hybrid connections with VNAs (Virtual Network Appliances)
+
+If you want to be informed of these posts as they're published, be sure to follow me on Twitter and link to the Atom feed (buttons for both are in the sidebar to the right).
+
+Thanks and I look forward to sharing more soon!
+
+Brian
