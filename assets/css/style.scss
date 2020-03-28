@@ -9,16 +9,16 @@
     background:transparent url(../../images/twitter.png) 0 0 no-repeat
 }*/
 
-#atom-link .atom-linktooltiptext {
+.atom-linktooltip .atom-linktooltiptext {
+   visibility: hidden;
    width: 120px;
    bottom: 100%;
    left: 50%;
    margin-left: -60px;   
 }
 
-#atom-link:hover {
+.atom-linktooltip:hover .atom-linktooltiptext {
     visibility: visible;
-    
 }
 
 @media screen and (min-width: 900px) {
