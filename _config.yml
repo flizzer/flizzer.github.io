@@ -20,7 +20,7 @@ twitter_username: AzureBri
 # Set this to true to get LaTeX math equation support
 use_math:
 
-title_image: "http//azurebrian.com/images/site_image.png"
+title_image: "http://azurebrian.com/images/site_image.png"
 
 # Add your Google Analytics ID here if you have one and want to use it
 google_analytics:
