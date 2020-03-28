@@ -9,7 +9,8 @@
     background:transparent url(../../images/twitter.png) 0 0 no-repeat
 }*/
 
-.atom-link-description {
+//Maybe use this when I want to ensure tooltips are working, but for now the icon is descriptive enough
+/*.atom-link-description {
    top: -5px;
    left: 105%;
    visibility: hidden;
@@ -17,7 +18,7 @@
 
 .atom-linkwrapper:hover .atom-link-description {
     visibility: visible;
-}
+}*/
 
 @media screen and (min-width: 900px) {
     header img {
