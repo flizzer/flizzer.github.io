@@ -9,6 +9,18 @@
     background:transparent url(../../images/twitter.png) 0 0 no-repeat
 }*/
 
+#atom-link .atom-linktooltiptext {
+   width: 120px;
+   bottom: 100%;
+   left: 50%;
+   margin-left: -60px;   
+}
+
+#atom-link:hover {
+    visibility: visible;
+    
+}
+
 @media screen and (min-width: 900px) {
     header img {
         position: absolute;
