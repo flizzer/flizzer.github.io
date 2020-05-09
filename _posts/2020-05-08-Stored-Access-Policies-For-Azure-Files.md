@@ -18,7 +18,7 @@ A plain ol' SAS without any sort of policy is known as an ad-hoc SAS, as defined
 
 In my research, I came across Hussein Salman's excellent blog post series on [SAS](https://husseinsalman.com/securing-access-to-azure-storage-part-1-introduction/) and specifically on using them in conjunction with [stored access policies](https://husseinsalman.com/securing-access-to-azure-storage-part-5-stored-access-policy/).  It really helped me weed thru the confusing landscape of secure, temporary access as I eluded to earlier.  Hussein's post on policies showed how to configure such a policy for Blob containers via the [Azure portal](https://portal.azure.com).  Yet, to my surprise when I went to the Azure Files section of the portal, there was no such UI for configuring a policy.  So, I endeavored to find out how to do it.  I eventually figured out how to do it using the Azure CLI and from Storage Explorer as well.  The latter I didn't even realize until I was writing this blog post.  It only takes a few commands or steps and at the end you'll have an Azure Files Service URI based on a stored access policy which you can hand your end user that's as locked down as you like.  You'll also be able to revoke that URI at any time, like when your client informs you they haven't renewed the end user's contract.  And perhaps best of all, you'll insulate yourself from having to regenerate storage account keys in an unplanned fashion.  Let's look at the CLI approach first:
 
-**Azure CLI**
+## Azure CLI
 
 These commands can be found in the [Azure CLI documentation](https://docs.microsoft.com/en-us/cli/azure/storage/share/policy?view=azure-cli-latest) and basically follow the CRUD commands you'd expect.  Of course, you need to use ```az login``` and login with an account that has sufficient permissions to run these commands.  The first command we want to run creates the Shared Access Policy:
 
@@ -61,20 +61,39 @@ az storage share policy update --name OneDayAccessFileShare --share-name <some s
 
 To expire the SAS we update the policy to use an expiration date in the past.  This automatically revokes the SAS by way of the policy.  Because the SAS gets sent with each request to the share, this will pretty much immediately revoke access to anyone using this SAS URI.  You can also just delete the policy, but the good thing about just updating the expiration date is that updating it back to a future date enables the SAS again.  So now you have full control over a user's access with just one line in the Azure CLI!
 
-**Azure Storage Explorer**
+## Azure Storage Explorer
 
 As I mentioned, while I was writing this post I was pleasantly surprised to find that the UI I had been looking for in the portal is actually baked into Storage Explorer.  That's ok, it made me get familiar with the relevant Azure CLI commands and it's nice to know more than one way to skin a cat.  Basically, we're going to do the same thing we did with the commands above, just in Storage Explorer.  And lest I not mention it, kudos to Microsoft for making Storage Explorer, and the CLI for that matter, cross-platform!  This is yet another benefit of Storage Explorer in that it's the same access, interface and functionality on any OS.  I'm doing all of this on my MacBook Pro and it's the same experience as on Windows. And for those of us supporting different end user preferences and environments, consistency is a great thing :+1:
 
 Just as with the CLI, you need to be logged in to Storage Explorer with an account that has the appopriate privileges to perform these operations. Let's start with creating the policy.  Right-click on your file share and you'll see options similar to these:
 
-![Storage Explore Manage Policies](../images/StorageExplorerManagePolices.png)
+![Storage Explorer Manage Policies](../images/StorageExplorerManagePolicies.png)
 
-##Summary
+Choose ```Manage Access Policies``` and you'll see a screen similar to this:
+
+![Storage Explore Policies](../images/StorageExplorerPolicies.png)
+
+If you've already perfomed the CLI steps above, you'll see one or more policies listed.  You'll notice you basically have the same options available to you as with the CLI steps.  One notable exception is the presence of a ```Create``` permission.  Per the [CLI documentation](https://docs.microsoft.com/en-us/cli/azure/storage/share/policy?view=azure-cli-latest#az-storage-share-policy-create) for ```az storage share policy create``` the only permissions you can specify via the CLI are ```rwdl```.  There is no ```c``` or mention of a create permission.  Yet, in the portal when creating an ad-hoc Files Service SAS you can specify one and in Storage Explorer you can as well.  I don't see any difference in behavior in Storage Explorer using either method however, as you can still upload files to the share, create folders and manipulate them as you would like.  It is curioius to me that there's a discrepancy, but I honestly don't know why this is.  If you know, please comment and share your wisdom!  
+
+Once the policy is created, you can right-click again on the share and choose ```Get Shared Access Signature```:
+
+![Get SAS](../images/GetSAS.png)
+
+You'll see a screen like this:
+
+![SAS](../images/SAS.png)
+
+At the very top, you can specify the policy you just created and the relevant values will populate based on how you set your policy other than the ```Start time:``` field which will basically be null.  Clicking create will create a URI that you can share with your end user.  You don't even have to append the SAS with the endpoint!  Although, it gives you a query string representation as well :grin:.
+
+
+## Summary
 
 Using Stored Access Policies to control access to resources like Azure Files shares has three distinct advantages:
 
    1. We create a choke-point where you can control access, particularly to users outside of an organization.
    2. We eliminate the need to rotate/regenerate storage account keys which could impact availability should you need to         revoke access.
    3. We allow for fine-grained control of permissions to Azure Files shares no matter which deployment model we're using.
+   
+I'd love to hear how you're securing your Azure Files shares or any constructive feedback you might have.  Hopefully this post will help a little the next time you or I are weeding through all the possible options Azure has to offer.
 
 
