@@ -20,7 +20,7 @@ In my research, I came across Hussein Salman's excellent blog post series on [SA
 
 **Azure CLI**
 
-These commands can be found in the [Azure CLI documentation](https://docs.microsoft.com/en-us/cli/azure/storage/share/policy?view=azure-cli-latest) and basically follow the CRUD commands you'd expect.  The first command we want to run creates the Shared Access Policy:
+These commands can be found in the [Azure CLI documentation](https://docs.microsoft.com/en-us/cli/azure/storage/share/policy?view=azure-cli-latest) and basically follow the CRUD commands you'd expect.  Of course, you need to use ```az login``` and login with an account that has sufficient permissions to run these commands.  The first command we want to run creates the Shared Access Policy:
 
 ```Powershell
 az storage share policy create --name OneDayAccessFileShare --share-name <some share name> --expiry 2020-05-10T18:08:01Z --permissions rwdl --account-name <some storage account name>
@@ -63,7 +63,11 @@ To expire the SAS we update the policy to use an expiration date in the past.  T
 
 **Azure Storage Explorer**
 
+As I mentioned, while I was writing this post I was pleasantly surprised to find that the UI I had been looking for in the portal is actually baked into Storage Explorer.  That's ok, it made me get familiar with the relevant Azure CLI commands and it's nice to know more than one way to skin a cat.  Basically, we're going to do the same thing we did with the commands above, just in Storage Explorer.  And lest I not mention it, kudos to Microsoft for making Storage Explorer, and the CLI for that matter, cross-platform!  This is yet another benefit of Storage Explorer in that it's the same access, interface and functionality on any OS.  I'm doing all of this on my MacBook Pro and it's the same experience as on Windows. And for those of us supporting different end user preferences and environments, consistency is a great thing :+1:
 
+Just as with the CLI, you need to be logged in to Storage Explorer with an account that has the appopriate privileges to perform these operations. Let's start with creating the policy.  Right-click on your file share and you'll see options similar to these:
+
+![Storage Explore Manage Policies](../images/StorageExplorerManagePolices.png)
 
 ##Summary
 
