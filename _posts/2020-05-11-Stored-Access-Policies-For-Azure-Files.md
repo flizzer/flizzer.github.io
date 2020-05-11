@@ -4,7 +4,7 @@ title: Stored Access Policies For Azure Files
 description: How to use Stored Access Policies for controlling access to Azure Files
 author: Brian Davis
 categories: how-to 
-tags: storage, files
+tags: storage files
 date: 2020-05-11
 comments: true
 published: true
