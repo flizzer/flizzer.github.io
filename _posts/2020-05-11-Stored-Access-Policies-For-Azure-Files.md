@@ -47,6 +47,7 @@ az storage share generate-sas --name <some share name> --policy-name OneDayAcces
 ```
 
 This generates output that looks something like this:
+
 ```sv=2018-11-09&si=OneDayAccessFileShare&sr=s&sig=Lpj%2Bqz50nM8J7z4AgMXWzHOe6tzDELjg1sIO5q3/fj0%3D```
 
 This is basically a query string that we can append to our file share URL.  If you don't know your file share URL, the easiest way to find it, in my opinion, is to look at the properties for the file share in the [portal](https://portal.azure.com).  Notice the reference to the policy we created assigned to the ```si``` variable.
