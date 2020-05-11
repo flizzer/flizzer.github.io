@@ -40,7 +40,7 @@ As you can probably guess, this command just lists out the policy to ensure it t
   },
 ```
 
-Now that we've got our policy created, we can generate a SAS
+Now that we've got our policy created, we can generate an SAS:
 
 ```Powershell
 az storage share generate-sas --name <some share name> --policy-name OneDayAccessFileShare --account-name <some storage account name>
