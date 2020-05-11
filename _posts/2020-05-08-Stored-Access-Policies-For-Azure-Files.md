@@ -7,7 +7,7 @@ categories: how-to,
 tags: storage, azure files
 date: 2020-05-08
 comments: true
-published: true
+published: false
 ---
 
 Lately, at work, I've been helping to lead an implementation of an Azure Files share for a client.  This is the second client we've set up with one, and it's a pretty elegant solution that mitigates the need for an on-prem file server.  It's also available everywhere and doesn't require being connected to a VPN, just to name a couple more benefits.  In order to provision access, we usually setup end users with either a mapped drive or, more recently, with [Azure Storage Explorer](https://azure.microsoft.com/en-us/features/storage-explorer/).  There are numerous advantages to using Storage Explorer, in my opinion, but that's not really the scope of this post.  However, the ability to use an SAS (Shared Access Signature) URI is one that is relevant.
