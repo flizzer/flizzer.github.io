@@ -83,7 +83,7 @@ You'll see a screen like this:
 
 ![SAS](../images/SAS.png)
 
-At the very top, you can specify the policy you just created and the relevant values will populate based on how you set your policy other than the ```Start time:``` field which will basically be null.  Clicking create will create a URI that you can share with your end user.  You don't even have to append the SAS with the endpoint!  Although, it gives you a query string representation as well :grin:.
+At the very top, you can specify the policy you just created and the relevant values will populate based on how you set your policy, other than the ```Start time:``` field.  It will basically be null.  Clicking create will create a URI that you can share with your end user.  You don't even have to append the SAS with the endpoint!  Although, it gives you a query string representation as well :grin:.
 
 
 ## Summary
