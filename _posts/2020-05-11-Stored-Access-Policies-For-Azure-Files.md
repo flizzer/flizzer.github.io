@@ -5,7 +5,7 @@ description: How to use Stored Access Policies for controlling access to Azure F
 author: Brian Davis
 categories: how-to 
 tags: storage, files
-date: 2020-05-08
+date: 2020-05-11
 comments: true
 published: true
 ---
