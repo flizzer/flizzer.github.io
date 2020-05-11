@@ -68,7 +68,7 @@ As I mentioned, while I was writing this post I was pleasantly surprised to find
 
 Just as with the CLI, you need to be logged in to Storage Explorer with an account that has the appopriate privileges to perform these operations. Let's start with creating the policy.  Right-click on your file share and you'll see options similar to these:
 
-![Storage Explorer Manage Policies](../images/StorageExplorerManagePolicies.png)
+![Storage Explorer Manage Policies](https://azurebrian.com/images/StorageExplorerManagePolicies.png)
 
 Choose ```Manage Access Policies``` and you'll see a screen similar to this:
 
