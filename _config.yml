@@ -14,9 +14,6 @@ github_username: flizzer
 email:
 twitter_username: AzureBri
 
-#github:
-#  twitter_url: 'https://twitter.com/AzureBri'
-
 # Set this to true to get LaTeX math equation support
 use_math:
 
