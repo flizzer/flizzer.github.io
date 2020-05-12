@@ -68,17 +68,17 @@ As I mentioned, while I was writing this post I was pleasantly surprised to find
 
 Just as with the CLI, you need to be logged in to Storage Explorer with an account that has the appopriate privileges to perform these operations. Let's start with creating the policy.  Right-click on your file share and you'll see options similar to these:
 
-![Storage Explorer Manage Policies](https://azurebrian.com/images/StorageExplorerManagePolicies.png)
+![Storage Explorer Manage Policies](/images/StorageExplorerManagePolicies.png)
 
 Choose ```Manage Access Policies``` and you'll see a screen similar to this:
 
-![Storage Explore Policies](https://azurebrian.com/images/StorageExplorerPolicies.png)
+![Storage Explore Policies](/images/StorageExplorerPolicies.png)
 
 If you've already perfomed the CLI steps above, you'll see one or more policies listed.  You'll notice you basically have the same options available to you as with the CLI steps.  One notable exception is the presence of a ```Create``` permission.  Per the [CLI documentation](https://docs.microsoft.com/en-us/cli/azure/storage/share/policy?view=azure-cli-latest#az-storage-share-policy-create) for ```az storage share policy create``` the only permissions you can specify via the CLI are ```rwdl```.  There is no ```c``` or mention of a create permission.  Yet, in the portal when creating an ad-hoc Files Service SAS you can specify one and in Storage Explorer you can as well.  I don't see any difference in behavior in Storage Explorer using either method however, as you can still upload files to the share, create folders and manipulate them as you would like.  It is curious to me that there's a discrepancy, but I honestly don't know why this is.  If you know, please comment and share your wisdom!  
 
 Once the policy is created, you can right-click again on the share and choose ```Get Shared Access Signature```:
 
-![Get SAS](https://azurebrian.com/images/GetSAS.png)
+![Get SAS](/images/GetSAS.png)
 
 You'll see a screen like this:
 
