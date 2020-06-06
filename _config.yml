@@ -20,7 +20,7 @@ use_math:
 title_image: "https://azurebrian.com/images/site_image.png"
 
 # Add your Google Analytics ID here if you have one and want to use it
-google_analytics:UA-168684568-1
+google_analytics: UA-168684568-1
 
 # this setting allows you to keep pages organized in the _pages folder
 include:
