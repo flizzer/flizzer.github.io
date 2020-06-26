@@ -134,7 +134,7 @@ The username of the administration account is set to be `foldingadmin`:
         },
 ```
 
-Obviously, you can customize this to be whatever you like.  Since we're using SSH and we want to keep our credentials out of any template files and source code repos, I have updated the template to reference my public key.  I stored this in my [Azure KeyVault instance](https://azure.microsoft.com/en-us/services/key-vault/) ahead of time, so you'll want to make sure you do the same before trying to deploy the template.  This is awesome, because we can just reference the things we want to keep secure instead of having to copy and paste them around so they can be fodder for the next hack.
+Obviously, you can customize this to be whatever you like.  Since we're using SSH and we want to keep our credentials out of any template files and source code repos, I have updated the template to reference my public key.  I stored this in my [Azure KeyVault instance](https://azure.microsoft.com/en-us/services/key-vault/) ahead of time, so you'll want to make sure you do the same before trying to deploy the template.  This is awesome, because we can just reference the things we want to keep secure instead of having to copy and paste them around to be fodder for the next hack.
 
 - The OS choice is actually set in the template and not in the parameters file.  Take a look:
 
