@@ -158,7 +158,7 @@ Obviously, you can customize this to be whatever you like.  Since we're using SS
 ```
 You can see here that we're creating this from an image and with the `18.04-LTS` sku.
 
-I think that about covers the important things I wanted to go over via the template.  I will say that there's a cool VS Code extension that I use to sometimes visualize the templates:
+I think that about covers the important things I wanted to go over via the template.  I will say that there's a cool VS Code extension that I use to sometimes visualize a template:
 
 ![ARM Viewer View](/images/ARMViewerView.png)
 
