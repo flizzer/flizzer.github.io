@@ -160,6 +160,6 @@ You can see here that we're creating this from an image and with the `18.04-LTS`
 
 I think that about covers the important things I wanted to go over via the template.  I will say that there's a cood VS Code extension that I use to sometimes visualize the templates:
 
-![ARM Viewer View]()
+![ARM Viewer View](/images/ARMViewerView.png)
 
 
