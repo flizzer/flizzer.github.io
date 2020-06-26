@@ -116,7 +116,7 @@ If you wanted to try and use Azure Spot VMs as mentioned a few paragraphs ago, y
                     ]
 ```
 
-The NSG rules allow SSH and RDP traffic originating from *only* your public source IP to the subnet where your VM instances reside.  I like using this approach when I don't want to deploy a VPN Gateway or when it's just me accessing my resources.  It's definitely not the most scalable approach should multiple entities need to manage the resources, but for these pet projects, it does the trick.  Without these rules and without configuring an alternative method of access, you won't have access to your VM instances.  Supposedly, you can use the [Azure Serial Console](https://docs.microsoft.com/en-us/azure/virtual-machines/troubleshooting/serial-console-overview) but I was unable to login via this method.  It really isn't meant as a substitute for other access methods, but YMMV.
+The NSG rules allow SSH and RDP traffic originating from *only* your public source IP to the subnet where your VM instances reside.  I like using this approach when I don't want to deploy a VPN Gateway or when it's just me accessing my resources.  It's definitely not the most scalable approach should multiple entities need to manage the resources, but for these pet projects, it does the trick.  Without these rules and without configuring an alternative method of access, you won't have access to your VM instances.  Supposedly, you can use the [Azure Serial Console](https://docs.microsoft.com/en-us/azure/virtual-machines/troubleshooting/serial-console-overview) but I was unable to login via this method.  It really isn't meant as a substitute for other access methods either, but YMMV.
 
 The username of the administration account is set to be `foldingadmin`:
 
