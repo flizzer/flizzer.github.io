@@ -32,8 +32,8 @@ As mentioned before, we're going to be using an ARM template to describe the res
 
    - A single resource group (`FoldingAtHomeRG` in the `southcentralus` region) that contains all the necessary resources including:
       - A single VMSS or VM Scale Set (`FoldingAtHomeVMSS`) containing:
-         - 2 identical VM instances, each configured with a single NIC (`FoldingAtHomeVMSS_0` and `FoldingAtHomeVMSS_1` respectively)
-         - A locally-redundant diagnostic storage account (`foldingathomergdiag166` *Please forgive the random naming here...*)
+         - 2 identical Ubuntu Linux 18.04-LTS VM instances, each configured with a single NIC (`FoldingAtHomeVMSS_0` and `FoldingAtHomeVMSS_1` respectively) and each configured with a public IP for ease of remote administration
+         - A locally-redundant diagnostic storage account used for VM boot diagnostics (`foldingathomergdiag166` *Please forgive the random naming here...*)
       - A single Virtual Network with one subnet (`FoldingAtHomeRG-vnet`)
       - A single NSG or Network Security Group applied to the subnet that allows for remote access (`FoldingAtHomeVMSSAccess-nsg`)
       
@@ -49,7 +49,23 @@ This really helps automate things instead of pointing-and-clicking through the p
 
 I won't go through the template line-by-line, but I do want to call out some important areas:
 
-- The template is currently set to use [`Standard_NV6`](https://docs.microsoft.com/en-us/azure/virtual-machines/nv-series) VMs.  As the link says, these use GPUs and to crunch the most numbers when doing those folding calculations, you need to use something that offloads the processing to a GPU.
+- The template is currently set to use [`Standard_NV6`](https://docs.microsoft.com/en-us/azure/virtual-machines/nv-series) VMs for the VMSS instances:
+
+```json
+"instanceSize": {
+            "value": "Standard_NV6"
+        },
+```
+
+As the link indicates, these use GPUs and, to crunch the most numbers when doing those folding calculations, you need to use something that offloads the processing to a GPU.  To go along with the VM `instanceSize`, you can also specify a `priority`:
+
+```json
+"priority": {
+            "value": "Regular"
+        },
+```
+
+If you wanted to try and use Azure Spot VMs as mentioned a few paragraphs ago, you would set this value to `Spot`.
 
 - There are several places in the parameters file, where you'll need to substitute `<insert your subscription id here>` with your actual subscription value.  For example, when specifying the `virtualNetworkId`, you'll need to use a valid subscription value:
 
@@ -100,9 +116,50 @@ I won't go through the template line-by-line, but I do want to call out some imp
                     ]
 ```
 
-The NSG rules allow SSH and RDP traffic originating from *only* your public source IP to the subnet where your VM instances reside.  I like using this approach when I don't want to deploy a VPN Gateway or when it's just me accessing my resources.  It's definitely not the most scalable approach should multiple entities need to manage the resources, but for these pet projects, it does the trick.  Without these rules and without configuring an alternative method of access, you won't have access to your VM instances.  Supposedly, you can use the [Azure Serial Console](https://docs.microsoft.com/en-us/azure/virtual-machines/troubleshooting/serial-console-overview) but I was unable to login via this method.  It isn't meant as a substitute for other access though anyway.
+The NSG rules allow SSH and RDP traffic originating from *only* your public source IP to the subnet where your VM instances reside.  I like using this approach when I don't want to deploy a VPN Gateway or when it's just me accessing my resources.  It's definitely not the most scalable approach should multiple entities need to manage the resources, but for these pet projects, it does the trick.  Without these rules and without configuring an alternative method of access, you won't have access to your VM instances.  Supposedly, you can use the [Azure Serial Console](https://docs.microsoft.com/en-us/azure/virtual-machines/troubleshooting/serial-console-overview) but I was unable to login via this method.  It really isn't meant as a substitute for other access methods, but YMMV.
 
+The username of the administration account is set to be `foldingadmin`:
 
+```json
+"adminUsername": {
+            "value": "foldingadmin"
+        },
+        "adminPublicKey": {
+            "reference": {
+                "keyVault": {
+                "id": "/subscriptions/<insert your subscription id here>/resourceGroups/bhd-key-vault-RG/providers/Microsoft.KeyVault/vaults/bhd-key-vault"
+                },
+                "secretName": "ssh-public"
+              }
+        },
+```
 
+Obviously, you can customize this to be whatever you like.  Since we're using SSH and we want to keep our credentials out of any template files and source code repos, I have updated the template to reference my public key.  I stored this in my [Azure KeyVault instance](https://azure.microsoft.com/en-us/services/key-vault/) ahead of time, so you'll want to make sure you do the same before trying to deploy the template.  This is awesome, because we can just reference the things we want to keep secure instead of having to copy and paste them around so they can be fodder for the next hack.
+
+- The OS choice is actually set in the template and not in the parameters file.  Take a look:
+
+```json
+"virtualMachineProfile": {
+                    "storageProfile": {
+                        "osDisk": {
+                            "createOption": "fromImage",
+                            "caching": "ReadWrite",
+                            "managedDisk": {
+                                "storageAccountType": "[parameters('osDiskType')]"
+                            }
+                        },
+                        "imageReference": {
+                            "publisher": "Canonical",
+                            "offer": "UbuntuServer",
+                            "sku": "18.04-LTS",
+                            "version": "latest"
+                        }
+                    },
+```
+You can see here that we're creating this from an image and with the `18.04-LTS` sku.
+
+I think that about covers the important things I wanted to go over via the template.  I will say that there's a cood VS Code extension that I use to sometimes visualize the templates:
+
+![ARM Viewer View]()
 
 
