@@ -158,6 +158,61 @@ Obviously, you can customize this to be whatever you like.  Since we're using SS
 ```
 You can see here that we're creating this from an image and with the `18.04-LTS` sku.
 
+- The creation and association of a public IP for each instance is handled in the template under the `networkProfile` section:
+
+```json
+"networkProfile": {
+                        "copy": [
+                            {
+                                "name": "networkInterfaceConfigurations",
+                                "count": "[length(parameters('networkInterfaceConfigurations'))]",
+                                "input": {
+                                    "name": "[parameters('networkInterfaceConfigurations')[copyIndex('networkInterfaceConfigurations')].name]",
+                                    "properties": {
+                                        "primary": "[parameters('networkInterfaceConfigurations')[copyIndex('networkInterfaceConfigurations')].primary]",
+                                        "enableAcceleratedNetworking": "[parameters('networkInterfaceConfigurations')[copyIndex('networkInterfaceConfigurations')].enableAcceleratedNetworking]",
+                                        "ipConfigurations": [
+                                            {
+                                                "name": "[concat(parameters('networkInterfaceConfigurations')[copyIndex('networkInterfaceConfigurations')].name, '-defaultIpConfiguration')]",
+                                                "properties": {
+                                                    "subnet": {
+                                                        "id": "[parameters('networkInterfaceConfigurations')[copyIndex('networkInterfaceConfigurations')].subnetId]"
+                                                    },
+                                                    "primary": "[parameters('networkInterfaceConfigurations')[copyIndex('networkInterfaceConfigurations')].primary]",
+                                                    "applicationGatewayBackendAddressPools": "[parameters('networkInterfaceConfigurations')[copyIndex('networkInterfaceConfigurations')].applicationGatewayBackendAddressPools]",
+                                                    "loadBalancerBackendAddressPools": "[parameters('networkInterfaceConfigurations')[copyIndex('networkInterfaceConfigurations')].loadBalancerBackendAddressPools]",
+                                                    "loadBalancerInboundNatPools": "[parameters('networkInterfaceConfigurations')[copyIndex('networkInterfaceConfigurations')].loadBalancerInboundNatPools]",
+                                                    "publicIPAddressConfiguration": "[if( equals( parameters('networkInterfaceConfigurations')[copyIndex('networkInterfaceConfigurations')].pipName, ''), json('null'), union(json(concat('{\"name\": \"', parameters('networkInterfaceConfigurations')[copyIndex('networkInterfaceConfigurations')].pipName, '\"}')),json('{\"properties\": { \"idleTimeoutInMinutes\": 15}}')))]"
+```
+
+If memory serves, the `publicIPAddressConfiguration` key basically just has to be set to a valid name, which we're supplying in the parameters file for `pipName`:
+
+```json
+"networkInterfaceConfigurations": {
+            "value": [
+                {
+                    "name": "FoldingAtHomeRG-vnet-nic01",
+                    "primary": true,
+                    "subnetId": "/subscriptions/<insert your subscription id here>/resourceGroups/FoldingAtHomeRG/providers/Microsoft.Network/virtualNetworks/FoldingAtHomeRG-vnet/subnets/default",
+                    "applicationGatewayBackendAddressPools": [],
+                    "loadBalancerBackendAddressPools": [],
+                    "applicationSecurityGroups": [],
+                    "loadBalancerInboundNatPools": [],
+                    "enableAcceleratedNetworking": false,
+                    "nsgName": "",
+                    "nsgId": "",
+                    "pipName": "FoldingAtHomeInstance-pip"
+```
+
+- Last, but not least for the template, you'll see where I tried to use the same tag `folding@home` for all of the associated resources:
+```json
+"tags": {
+                "application": "folding@home"
+            }
+```
+
+Even though all of these resources are scoped to the same resource group, using tags can be a helpful way to allow for searching and filtering later on.
+
 I think that about covers the important things I wanted to go over via the template.  I will say that there's a cool VS Code extension that I use to sometimes visualize a template:
 
 ![ARM Viewer View](/images/ARMViewerView.png)
