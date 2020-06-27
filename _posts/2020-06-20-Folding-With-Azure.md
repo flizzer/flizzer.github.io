@@ -34,8 +34,8 @@ As mentioned before, we're going to be using an ARM template to describe the res
       - A single VMSS or VM Scale Set (`FoldingAtHomeVMSS`) containing:
          - 2 identical Ubuntu Linux 18.04-LTS VM instances, each configured with a single NIC (`FoldingAtHomeVMSS_0` and `FoldingAtHomeVMSS_1` respectively) and each configured with a public IP for ease of remote administration
          - A locally-redundant diagnostic storage account used for VM boot diagnostics (`foldingathomergdiag166` *Please forgive the random naming here...*)
-      - A single Virtual Network with one subnet (`FoldingAtHomeRG-vnet`)
-      - A single NSG or Network Security Group applied to the subnet that allows for remote access (`FoldingAtHomeVMSSAccess-nsg`)
+      - A single Virtual Network (`FoldingAtHomeRG-vnet`) with one subnet (10.1.0.0/24)
+      - A single NSG or Network Security Group applied to the subnet that allows for remote access via the Internet (`FoldingAtHomeVMSSAccess-nsg`)
       
 An ARM template is great for this scenario.  It allows us to again, *describe*, the resources we want to deploy, and then tweak and repeat until we're satisfied.  In our case, we have a template file and an associated parameters file.  You can find these and the CLI commands we'll use for deploying in my [FoldingAtHomeWithAzure](https://github.com/flizzer/FoldingtAtHomeWithAzure/tree/master) repo.  The template is essentially the baseline code that indicates the resources and the parameters file lets you, you guessed it, parameterize any specifics.  For instance, if you want to deploy 4 instances instead of the 2 I have configured, you can adjust the value for the `InstanceCount` parameter to your liking:
 
