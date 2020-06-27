@@ -16,7 +16,7 @@ published: false
  2. **Azure CLI deployment**
  3. **Installing and Configuring Folding@home software**
  4. **Observations so far**
- 5. **Links to Quickstart templates and hopefully this template will be added there**
+ 5. **Next Steps**
  6. **Conclusion**
  
  ## Introduction
@@ -282,8 +282,20 @@ Ok, now that we've got some resources to work with, how do we actually participa
 
 ## Observations So Far
 
-If you've made it this far, I hope you now have Azure resources contributing to the Folding@home project!  If you do, that should make you feel really good.  If you're like me, you've learned a lot through this process and are contributing, perhaps ever so slightly, towards helping humanity as a whole.  So, congratulations!  I did want to just give my observations on what I've seen so far as well.  Really, it's only been a few weeks since I started contributing.  I'm a bit bummed because after I deployed and had this cranking, it only took a couple of days for me to reach the credit limit on my Visual Studio Enterprise subscription ($150/month).  The rest of the time, my subscription has been sitting idle.  It's good that those credits have been used (because they weren't before), but I feel like I could be doing so much more.  I'm also bummed because I couldn't deploy Spot VMs as I've mentioned a few times now.  That really would have knocked the cost down, but there also would have been the potential for those VMs to get kicked out when the capacity was needed, and that would've wasted time as well.  If I were just using a normal PAYGO subscription, I think I could have easily racked up a bill that was at least a couple thousand.  I guess I could play with using a less powerful NV series VM or maybe one without a GPU, but I kind of think if I have to do that then, what's the point?  I've also thought about creating a "Donate" link or trying to get some kind of sponsorship or [Patreon page](https://www.patreon.com).  I just can't afford to pay that month after month or even for one month.  If you have any ideas, please let me know in the comments below.
+If you've made it this far, I hope you now have Azure resources contributing to the Folding@home project!  If you do, that should make you feel really good.  If you're like me, you've learned a lot through this process and are contributing, perhaps ever so slightly, towards helping humanity as a whole.  So, congratulations!  I did want to just give my observations on what I've seen so far as well.  Really, it's only been a few weeks since I started contributing.  I'm a bit bummed because after I deployed and had this cranking, it only took a couple of days for me to reach the credit limit on my Visual Studio Enterprise subscription ($150/month).  The rest of the time, my subscription has been sitting idle.  It's good that those credits have been used (because they weren't before), but I feel like I could be doing so much more.  I'm also bummed because I couldn't deploy Spot VMs as I've mentioned a few times now.  That really would have knocked the cost down, but there also would have been the potential for those VMs to get kicked out when the capacity was needed, and that would've wasted time as well.  If I were just using a normal PAYGO subscription, I think I could have easily racked up a bill that was at least a couple thousand.  I guess I could play with using a less powerful NV series VM or maybe one without a GPU, but I kind of think if I have to do that then, what's the point?  I've also thought about creating a "Donate" link or trying to get some kind of sponsorship or [Patreon page](https://www.patreon.com).  If you have any ideas, please let me know in the comments below.
 
 All in all though, I really like this solution.  I love the fact that I can tweak and redeploy in just a few minutes.  Using the VMSS allows for flexibility with scaling should I want to do that in the future.  It's pretty elegant and once it's running, it feels pretty "set it and forget it".  Although, if you are on a non-credit based subscription, I would advise creating a budget and then setting budget alerts so you get notified at different thresholds such as 50%, 100% or whenever you'd like to be notified.  That way, "forgetting it" won't mean buying the farm (the server farm maybe, but not the actual...umm...farm...nevermind 😏)
 
-## Links to Quickstart templates and hopefully this template will be added there
+## Next Steps
+
+The next immediate task on the horizon which I would like to do is get this template added to the [Azure QuickStart Templates](https://azure.microsoft.com/en-us/resources/templates/) site. This is a collection of ARM templates for all kinds of workloads and scenarios.  Surprisingly, at least to me, there are no templates for Folding@home workloads.  So, I would very much like to get this added in order to make it more widely available.  From what I've read, this requires a pull request to the Quickstart Templates repo and a bit of standardization. If I can get this done, I'll update this post or maybe even do a new one on the experience.
+
+## Conclusion
+
+I know we've covered a fair amount of territory and you may be thinking "Gosh...there's a lot to get my head around in order to do this."  I would just say, I hope a lot of the heavy lifting has been accounted for via the template.  I certainly have much more to learn regarding ARM Templates, but one doesn't have to be an expert in order to use them.  In light of this, you just need to do three things:
+
+1. Update the parameters file placeholders with your specifics.
+2. Validate and Deploy
+3. Install the Folding@home software and verify.
+
+That's it!  Using the template as-is should be pretty easy to deploy.  And honestly, your help is needed!  The COVID-19 pandemic is still raging as are these other diseases, and your horsepower would help expedite finding cures.  If you have constructive feedback on the template or ways to make it better, please chime in in the comments below.  Thanks and Happy Folding!
