@@ -15,8 +15,9 @@ published: false
  2. **ARM template**
  2. **Azure CLI deployment**
  3. **Installing and Configuring Folding@home software**
- 4. **Personal mileage with running and costs**
+ 4. **Observations so far**
  5. **Links to Quickstart templates and hopefully this template will be added there**
+ 6. **Conclusion**
  
  ## Introduction
 
@@ -221,7 +222,7 @@ It's called [ARM Template Viewer](https://marketplace.visualstudio.com/items?ite
 
 ## Azure CLI Deployment
 
-So, now that we've got our template and our parameters file all fixed up, it's time to deploy.  For this, I like to use [Azure CLI](https://docs.microsoft.com/en-us/cli/azure/?view=azure-cli-latest) commands.  In the same repo, you'll find the [deployVMSS.azcli](https://github.com/flizzer/FoldingtAtHomeWithAzure/blob/master/VMSSTemplate/deployVMSS.azcli) file containing the commands we'll need.  Of course, the first thing you must do is login:
+So, now that we've got our template and our parameters file all fixed up, it's time to deploy.  For this, I like to use [Azure CLI](https://docs.microsoft.com/en-us/cli/azure/?view=azure-cli-latest) commands.  You can install it from [here](https://docs.microsoft.com/en-us/cli/azure/install-azure-cli?view=azure-cli-latest).  In the same repo, you'll find the [deployVMSS.azcli](https://github.com/flizzer/FoldingtAtHomeWithAzure/blob/master/VMSSTemplate/deployVMSS.azcli) file containing the commands we'll need.  Of course, the first thing you must do is login:
 
 ```powershell
 az login
@@ -274,3 +275,15 @@ az deployment group create `
   ```
   
 Simply give a name for the deployment and specify the RG, template, and parameters files.  The deployment name is used to reference the deployment.  Hopefully, no errors occur but if they do, think of them as run-time errors.  You might have to tweak your template/parameters file still if you happen to run into any.  If all goes well, you should see the resources appear in your Azure subscription under the `FoldingAtHomeRG` in just a few minutes.  It took maybe 5 minutes or so when I deployed.  Pretty slick!
+
+## Installing and Configuring Folding@home software
+
+Ok, now that we've got some resources to work with, how do we actually participate in the Folding@home project.  I'd like to point out another great [blog post](https://medium.com/@hughxie/run-folding-home-in-an-azure-vm-3d2df989a33e) that was a huge help in getting this going.  Hugh Xie's post was very easy to follow and helped streamline the process.  In fact, the choice for using Ubuntu-based VMs was based on this post after seeing how a few SSH commands could get this going.  In fact, it's so good, I'm not sure I really have a lot to offer other than just follow his guide!  Since you've now got resources deployed, you can skip to step 2.  From there, he'll walk you thru downloading the software needed to connect to Folding@home.  I recommend to use `full` system resources when prompted, and for me, I just chose to contribute anonymously for now.  Maybe I'll create or join a team in the future 🤷‍♂️.  After installing the software you should be able to monitor your VM instances both on the machine via the `tail` and `watch` commands that Hugh gives you as well as via the VMSS page of your subscription in the [Azure portal](portal.azure.com).
+
+## Observations So Far
+
+If you've made it this far, I hope you now have Azure resources contributing to the Folding@home project!  If you do, that should make you feel really good.  If you're like me, you've learned a lot through this process and are contributing, perhaps ever so slightly, towards helping humanity as a whole.  So, congratulations!  I did want to just give my observations on what I've seen so far.  Really, it's only been a few weeks since I started contributing.  I'm a bit bummed because after I deployed and had this cranking, it only took a couple of days for me to reach the credit limit on my Visual Studio Enterprise subscription ($150/month).  The rest of the time, my subscription has been sitting idle.  It's good that those credits have been used (because they weren't before), but I feel like I could be doing so much more.  I'm also bummed because I couldn't deploy Spot VMs as I've mentioned a few times now.  That really would have knocked the cost down, but there also would have been the potential for those VMs to get kicked out when the capacity was needed, and that would've wasted time as well.  If I were just using a normal PAYGO subscription, I think I could have easily racked up a bill that was at least a couple thousand.  I've thought about creating a "Donate" link or trying to get some kind of sponsorship or [Patreon page](https://www.patreon.com).  I just can't afford to do that month after month or even for one month.  If you have any ideas, please let me know in the comments below.
+
+All in all though, I really like this solution.  I love the fact that I can tweak and redeploy in just a few minutes.  Using the VMSS allows for flexibility with scaling should I want to do that in the future.  It's pretty elegant and once it's running, it feels pretty "set it and forget it".  Although, if you are on a non-credit based subscription, I would advise creating a budget and then setting budget alerts so you get notified at different thresholds such as 50%, 100% or whenever you'd like to be notified.  That way, "forgetting it" won't mean buying the farm (the server farm maybe, but not the actual...umm...farm...nevermind 😏)
+
+## Links to Quickstart templates and hopefully this template will be added there
