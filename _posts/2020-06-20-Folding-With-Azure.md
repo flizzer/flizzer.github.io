@@ -13,7 +13,7 @@ published: false
 # Table Of Contents
  1. **Introduction**
  2. **ARM template**
- 2. **CLI deployment**
+ 2. **Azure CLI deployment**
  3. **Installing and Configuring Folding@home software**
  4. **Personal mileage with running and costs**
  5. **Links to Quickstart templates and hopefully this template will be added there**
@@ -218,4 +218,10 @@ I think that about covers the important things I wanted to go over via the templ
 ![ARM Viewer View](/images/ARMViewerView.png)
 
 It's called [ARM Template Viewer](https://marketplace.visualstudio.com/items?itemName=bencoleman.armview), is authored by Ben Coleman, and is averaging 4.9 out of 5 stars on Visual Studio Marketplace currently.  It's great for when you want to see a graphical representation of your template.  You also can import a parameters file, like the one we're using here, to allow you to click on a resource and see the specifics of the parameters defined.  I highly recommend it and kudos to Ben for his hard work.
+
+## Azure CLI Deployment
+
+So, now that we've got our template and our parameters file all fixed up, it's time to deploy.  For this, I like to use [Azure CLI](https://docs.microsoft.com/en-us/cli/azure/?view=azure-cli-latest) commands.  In the same repo, you'll find the [deployVMSS.azcli](https://github.com/flizzer/FoldingtAtHomeWithAzure/blob/master/VMSSTemplate/deployVMSS.azcli) file containing the commands we'll need.  Let's look at them:
+
+- 
 
