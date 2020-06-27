@@ -12,7 +12,7 @@ published: false
 
 # Table Of Contents
  1. **[Introduction](#Introduction)**
- 2. **[ARM template](#ARM template)**
+ 2. **[ARM template](#ARM-template)**
  2. **Azure CLI deployment**
  3. **Installing and Configuring Folding@home software**
  4. **Observations so far**
