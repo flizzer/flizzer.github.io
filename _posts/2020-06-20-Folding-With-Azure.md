@@ -221,7 +221,56 @@ It's called [ARM Template Viewer](https://marketplace.visualstudio.com/items?ite
 
 ## Azure CLI Deployment
 
-So, now that we've got our template and our parameters file all fixed up, it's time to deploy.  For this, I like to use [Azure CLI](https://docs.microsoft.com/en-us/cli/azure/?view=azure-cli-latest) commands.  In the same repo, you'll find the [deployVMSS.azcli](https://github.com/flizzer/FoldingtAtHomeWithAzure/blob/master/VMSSTemplate/deployVMSS.azcli) file containing the commands we'll need.  Let's look at them:
+So, now that we've got our template and our parameters file all fixed up, it's time to deploy.  For this, I like to use [Azure CLI](https://docs.microsoft.com/en-us/cli/azure/?view=azure-cli-latest) commands.  In the same repo, you'll find the [deployVMSS.azcli](https://github.com/flizzer/FoldingtAtHomeWithAzure/blob/master/VMSSTemplate/deployVMSS.azcli) file containing the commands we'll need.  Of course, the first thing you must do is login:
 
-- 
+```powershell
+az login
+```
 
+Now that we've gotten that out of the way, let's look at the commands:
+
+- Find which VM skus are supported in which region:
+
+```powershell
+az vm list-skus --location eastus2 --size Standard_NV --output table
+```
+To find if a particular VM series is available in a specific region, you can use some variant of the above command.  This will help avoid errors when you actually deploy.
+
+- Update your KeyVault
+
+```powershell
+az keyvault update  --name bhd-key-vault --enabled-for-template-deployment true
+```
+
+In the last section I mentioned how referencing secrets from Azure Key Vault is a great thing.  However, apparently, you must explicitly tell your Key Vault instance you want to do this.  Now you can add that public SSH key:
+
+```powershell
+az keyvault secret set --vault-name bhd-key-vault --name "ssh-public" --value <insert your public key value>
+```
+
+- Validate your deployment
+
+Ok, here's the meat and potatos of all of this.  There's a command we can run to validate our template; think checking for compile-time errors:
+
+```powershell
+az deployment group validate `
+    --resource-group FoldingAtHomeRG `
+    --template-file template.json `
+    --parameters parameters.json
+```
+
+Notice we specify the RG and then the paths to the template file and associated parameters file respectively.  This will help whittle down any major errors so we can get our files in shape before actually attempting to deploy.
+
+- Deploy
+
+Ok, now that all looks good with our files and we've weeded out as many problems as we can before deployment, here we go:
+
+```powershell
+az deployment group create `
+  --name FoldingAtHomeDeployment `
+  --resource-group FoldingAtHomeRG `
+  --template-file template.json `
+  --parameters parameters.json
+  ```
+  
+Simply give a name for the deployment and specify the RG, template, and parameters files.  The deployment name is used to reference the deployment.  Hopefully, no errors occur but if they do, think of them as run-time errors.  You might have to tweak your template/parameters file still if you happen to run into any.  If all goes well, you should see the resources appear in your Azure subscription under the `FoldingAtHomeRG` in just a few minutes.  It took maybe 5 minutes or so when I deployed.  Pretty slick!
