@@ -7,17 +7,8 @@ categories: how-to
 tags: folding@home
 date: 2020-06-20
 comments: true
-published: false
+published: true
 ---
-
-# Table Of Contents
- 1. **[Introduction](#Introduction)**
- 2. **[ARM template](#ARM-template)**
- 2. **[Azure CLI deployment](#Azure-cli-deployment)**
- 3. **[Installing and Configuring Folding@home software](#Installing-and-Configuring-Folding@home-software)**
- 4. **[Observations So Far](#Observations-So-Far)**
- 5. **[Next Steps](#Next-Steps)**
- 6. **[Conclusion](#Conclusion)**
  
  ## Introduction
 
