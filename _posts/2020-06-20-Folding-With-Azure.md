@@ -10,7 +10,7 @@ comments: true
 published: false
 ---
  
- ### Introduction
+ ## Introduction
 
 If you're like me, the whole COVID-19 pandemic has made you think about how each one us can help do our part to get us out of this mess and on to brighter days.  Proper social distancing and following the basic guidelines is no small feat to be sure, but what about contributing to actually finding a cure or vaccine.  If you're not an epidemiologist or Dr. Anthony Fauci, figuring out how you can contribute to those noble causes, might be less obvious.  There actually *is* a way that you can put your IT expertise and resources to good use towards these goals, though.  
 
@@ -18,7 +18,7 @@ There is a project called [Folding@home](https://foldingathome.org) that uses a 
 
 The goal of this post is to walk throuh the steps I took to get an environment up and running in Azure for contributing to the Folding@home project.  I hope it will serve as a relatively easy-to-use guide for doing just that.  It's assumed you already have access to an Azure subscription and the rights to add new resources.  You'll also need to be familiar with the Azure CLI or some other means of deploying resources via an [ARM (Azure Resource Manager) template](https://docs.microsoft.com/en-us/azure/azure-resource-manager/templates/overview).  I'll give you the commands needed for use with the CLI.  I'd also like to acknowledge Josh Heffner and his excellent [post](https://joshheffner.com/how-to-run-foldinghome-on-azure-spot-vms/) which was an invaluable help to me as a blueprint.  It's a great resource for explaining how to use [Azure Spot VMs](https://azure.microsoft.com/en-us/pricing/spot/) to save costs while participating in Folding@home.  At first, this was my goal as well, but though I tried, I was unable to deploy Spot VMs in any region.  So, I gave up and just went with traditional VMs.  I'm not sure if this was just due to high-demand for Spot VMs or if it's because they weren't supported in the configuration I was trying.  No worries, if you can get them deployed, you can use them as substitutes for the steps I outline here and you'll end up saving on VM costs in the long run.  If you're successful, please leave a comment below!  Maybe I didn't quite hold my mouth right or something 😜.  Let's get started!
 
-### ARM Template
+## ARM Template
 
 As mentioned before, we're going to be using an ARM template to describe the resources needed and then deploy them.  The main resources we're going to be deploying are:
 
@@ -211,7 +211,7 @@ I think that about covers the important things I wanted to go over via the templ
 
 It's called [ARM Template Viewer](https://marketplace.visualstudio.com/items?itemName=bencoleman.armview), is authored by Ben Coleman, and is averaging 4.9 out of 5 stars on Visual Studio Marketplace currently.  It's great for when you want to see a graphical representation of your template.  You also can import a parameters file, like the one we're using here, to allow you to click on a resource and see the specifics of the parameters defined.  I highly recommend it and kudos to Ben for his hard work.
 
-### Azure CLI Deployment
+## Azure CLI Deployment
 
 So, now that we've got our template and our parameters file all fixed up, it's time to deploy.  For this, I like to use [Azure CLI](https://docs.microsoft.com/en-us/cli/azure/?view=azure-cli-latest) commands.  You can install it from [here](https://docs.microsoft.com/en-us/cli/azure/install-azure-cli?view=azure-cli-latest).  In the same repo, you'll find the [deployVMSS.azcli](https://github.com/flizzer/FoldingtAtHomeWithAzure/blob/master/VMSSTemplate/deployVMSS.azcli) file containing the commands we'll need.  Of course, the first thing you must do is login:
 
@@ -267,21 +267,21 @@ az deployment group create `
   
 Simply give a name for the deployment and specify the RG, template, and parameters files.  The deployment name is used to reference the deployment.  Hopefully, no errors occur but if they do, think of them as run-time errors.  You might have to tweak your template/parameters file still if you happen to run into any.  If all goes well, you should see the resources appear in your Azure subscription under the `FoldingAtHomeRG` in just a few minutes.  It took maybe 5 minutes or so when I deployed.  Pretty slick!
 
-### Installing and Configuring Folding@home software
+## Installing and Configuring Folding@home software
 
 Ok, now that we've got some resources to work with, how do we actually participate in the Folding@home project.  I'd like to point out another great [blog post](https://medium.com/@hughxie/run-folding-home-in-an-azure-vm-3d2df989a33e) that was a huge help in getting this going.  Hugh Xie's post was very easy to follow and helped streamline the process.  In fact, the choice for using Ubuntu-based VMs was based on this post after seeing how a few SSH commands could get this going.  In fact, it's so good, I'm not sure I really have a lot to offer other than just follow his guide!  Since you've now got resources deployed, you can skip to step 2.  From there, he'll walk you thru downloading the software needed to connect to Folding@home.  I recommend to use `full` system resources when prompted, and for me, I just chose to contribute anonymously for now.  Maybe I'll create or join a team in the future 🤷‍♂️.  After installing the software you should be able to monitor your VM instances both on the machine via the `tail` and `watch` commands that Hugh gives you as well as via the VMSS page of your subscription in the [Azure portal](https://portal.azure.com).
 
-### Observations So Far
+## Observations So Far
 
 If you've made it this far, I hope you now have Azure resources contributing to the Folding@home project!  If you do, that should make you feel really good.  If you're like me, you've learned a lot through this process and are contributing, perhaps ever so slightly, towards helping humanity as a whole.  So, congratulations!  I did want to just give my observations on what I've seen so far as well.  Really, it's only been a few weeks since I started contributing.  I'm a bit bummed because after I deployed and had this cranking, it only took a couple of days for me to reach the credit limit on my Visual Studio Enterprise subscription ($150/month).  The rest of the time, my subscription has been sitting idle.  It's good that those credits have been used (because they weren't before), but I feel like I could be doing so much more.  I'm also bummed because I couldn't deploy Spot VMs as I've mentioned a few times now.  That really would have knocked the cost down, but there also would have been the potential for those VMs to get kicked out when the capacity was needed, and that would've wasted time as well.  If I were just using a normal PAYGO subscription, I think I could have easily racked up a bill that was at least a couple thousand.  I guess I could play with using a less powerful NV series VM or maybe one without a GPU, but I kind of think if I have to do that then, what's the point?  I've also thought about creating a "Donate" link or trying to get some kind of sponsorship or [Patreon page](https://www.patreon.com).  If you have any ideas, please let me know in the comments below.
 
 All in all though, I really like this solution.  I love the fact that I can tweak and redeploy in just a few minutes.  Using the VMSS allows for flexibility with scaling should I want to do that in the future.  It's pretty elegant and once it's running, it feels pretty "set it and forget it".  Although, if you are on a non-credit based subscription, I would advise creating a budget and then setting budget alerts so you get notified at different thresholds such as 50%, 100% or whenever you'd like to be notified.  That way, "forgetting it" won't mean buying the farm (the server farm maybe, but not the actual...umm...farm...nevermind 😏)
 
-### Next Steps
+## Next Steps
 
 The next immediate task on the horizon which I would like to do is get this template added to the [Azure QuickStart Templates](https://azure.microsoft.com/en-us/resources/templates/) site. This is a collection of ARM templates for all kinds of workloads and scenarios.  Surprisingly, at least to me, there are no templates for Folding@home workloads.  So, I would very much like to get this added in order to make it more widely available.  From what I've read, this requires a pull request to the Quickstart Templates repo and a bit of standardization. If I can get this done, I'll update this post or maybe even do a new one on the experience.
 
-### Conclusion
+## Conclusion
 
 I know we've covered a fair amount of territory and you may be thinking "Gosh...there's a lot to get my head around in order to do this."  I would just say, I hope a lot of the heavy lifting has been accounted for via the template.  I certainly have much more to learn regarding ARM Templates, but one doesn't have to be an expert in order to use them.  In light of this, you just need to do three things:
 
