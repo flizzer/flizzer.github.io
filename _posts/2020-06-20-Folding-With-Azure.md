@@ -17,6 +17,7 @@ published: true
  4. **[Observations So Far](#Observations-So-Far)**
  5. **[Next Steps](#Next-Steps)**
  6. **[Conclusion](#Conclusion)**
+
  {:toc}
  
  ## Introduction
