@@ -5,7 +5,7 @@ description: How to help fight COVID-19 with your spare Azure resources
 author: Brian Davis
 categories: how-to 
 tags: folding@home
-date: 2020-06-30
+date: 2020-06-29
 comments: true
 published: true
 ---
