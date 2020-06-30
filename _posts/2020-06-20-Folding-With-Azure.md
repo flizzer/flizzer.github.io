@@ -224,7 +224,7 @@ It's called [ARM Template Viewer](https://marketplace.visualstudio.com/items?ite
 
 So, now that we've got our template and our parameters file all fixed up, it's time to deploy.  For this, I like to use [Azure CLI](https://docs.microsoft.com/en-us/cli/azure/?view=azure-cli-latest) commands.  You can install it from [here](https://docs.microsoft.com/en-us/cli/azure/install-azure-cli?view=azure-cli-latest).  In the same repo, you'll find the [deployVMSS.azcli](https://github.com/flizzer/FoldingtAtHomeWithAzure/blob/master/VMSSTemplate/deployVMSS.azcli) file containing the commands we'll need.  Of course, the first thing you must do is login:
 
-```powershell
+```Powershell
 az login
 ```
 
@@ -232,20 +232,20 @@ Now that we've gotten that out of the way, let's look at the commands:
 
 - Find which VM skus are supported in which region:
 
-```powershell
+```Powershell
 az vm list-skus --location eastus2 --size Standard_NV --output table
 ```
 To find if a particular VM series is available in a specific region, you can use some variant of the above command.  This will help avoid errors when you actually deploy.
 
 - Update your KeyVault
 
-```powershell
+```Powershell
 az keyvault update  --name bhd-key-vault --enabled-for-template-deployment true
 ```
 
 In the last section I mentioned how referencing secrets from Azure Key Vault is a great thing.  However, apparently, you must explicitly tell your Key Vault instance you want to do this.  Now you can add that public SSH key:
 
-```powershell
+```Powershell
 az keyvault secret set --vault-name bhd-key-vault --name "ssh-public" --value <insert your public key value>
 ```
 
@@ -253,7 +253,7 @@ az keyvault secret set --vault-name bhd-key-vault --name "ssh-public" --value <i
 
 Ok, here's the meat and potatos of all of this.  There's a command we can run to validate our template; think checking for compile-time errors:
 
-```powershell
+```Powershell
 az deployment group validate `
     --resource-group FoldingAtHomeRG `
     --template-file template.json `
@@ -266,7 +266,7 @@ Notice we specify the RG and then the paths to the template file and associated 
 
 Ok, now that all looks good with our files and we've weeded out as many problems as we can before deployment, here we go:
 
-```powershell
+```Powershell
 az deployment group create `
   --name FoldingAtHomeDeployment `
   --resource-group FoldingAtHomeRG `
