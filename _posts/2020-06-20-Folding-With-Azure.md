@@ -10,13 +10,13 @@ comments: true
 published: true
 ---
 
- 1. **[Introduction](#Introduction)**
- 2. **[ARM template](#ARM-template)**
- 2. **[Azure CLI deployment](#Azure-cli-deployment)**
- 3. **[Installing and Configuring Folding@home software](#Installing-and-Configuring-Folding@home-software)**
- 4. **[Observations So Far](#Observations-So-Far)**
- 5. **[Next Steps](#Next-Steps)**
- 6. **[Conclusion](#Conclusion)**
+ 1. **Introduction**
+ 2. **ARM template**
+ 2. **Azure CLI deployment**
+ 3. **Installing and Configuring Folding@home software**
+ 4. **Observations So Far**
+ 5. **Next Steps**
+ 6. **Conclusion**
 
  {:toc}
  
