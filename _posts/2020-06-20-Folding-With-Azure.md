@@ -10,7 +10,7 @@ comments: true
 published: true
 ---
 
- - **Introduction**
+ - **Intro**
  - **ARM template**
  - **Azure CLI deployment**
  - **Installing and Configuring Folding@home software**
@@ -20,7 +20,7 @@ published: true
 
  {:toc}
  
- ## Introduction
+ ## Intro
 
 If you're like me, the whole COVID-19 pandemic has made you think about how each one us can help do our part to get us out of this mess and on to brighter days.  Proper social distancing and following the basic guidelines is no small feat to be sure, but what about contributing to actually finding a cure or vaccine.  If you're not an epidemiologist or Dr. Anthony Fauci, figuring out how you can contribute to those noble causes, might be less obvious.  There actually *is* a way that you can put your IT expertise and resources to good use towards these goals, though.  
 
