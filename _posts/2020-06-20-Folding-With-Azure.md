@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Folding At Home With Your Spare Azure Credits
+title: Folding@home With Your Spare Azure Credits
 description: How to help fight COVID-19 with your spare Azure resources
 author: Brian Davis
 categories: how-to 
