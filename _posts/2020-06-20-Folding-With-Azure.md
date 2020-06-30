@@ -10,6 +10,8 @@ comments: true
 published: true
 ---
 
+## Table Of Contents
+
  1. **Introduction**
  2. **ARM template**
  3. **Azure CLI deployment**
