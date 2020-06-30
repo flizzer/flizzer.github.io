@@ -294,8 +294,8 @@ The next immediate task on the horizon which I would like to do is get this temp
 
 I know we've covered a fair amount of territory and you may be thinking "Gosh...there's a lot to get my head around in order to do this."  I would just say, I hope a lot of the heavy lifting has been accounted for via the template.  I certainly have much more to learn regarding ARM Templates, but one doesn't have to be an expert in order to use them.  In light of this, you just need to do three things:
 
-1. Update the parameters file placeholders with your specifics.
-2. Validate and Deploy
-3. Install the Folding@home software and verify.
+   1. Update the parameters file placeholders with your specifics.
+   2. Validate and Deploy
+   3. Install the Folding@home software and verify.
 
 That's it!  Using the template as-is should be pretty easy to deploy.  And honestly, your help is needed!  The COVID-19 pandemic is still raging as are these other diseases, and your horsepower would help expedite finding cures.  If you have constructive feedback on the template or ways to make it better, please chime in in the comments below.  Thanks and Happy Folding!
