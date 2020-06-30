@@ -10,7 +10,7 @@ comments: true
 published: true
 ---
 
-### Table of Contents
+Table of Contents
 
  1. **[Introduction](#Introduction)**
  2. **[ARM template](#ARM-template)**
