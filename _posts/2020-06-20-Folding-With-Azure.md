@@ -40,7 +40,7 @@ As mentioned before, we're going to be using an ARM template to describe the res
       
 An ARM template is great for this scenario.  It allows us to again, *describe*, the resources we want to deploy, and then tweak and repeat until we're satisfied.  In our case, we have a template file and an associated parameters file.  You can find these and the CLI commands we'll use for deploying in my [FoldingAtHomeWithAzure](https://github.com/flizzer/FoldingtAtHomeWithAzure/tree/master) repo.  The template is essentially the baseline code that indicates the resources and the parameters file lets you, you guessed it, parameterize any specifics.  For instance, if you want to deploy 4 instances instead of the 2 I have configured, you can adjust the value for the `InstanceCount` parameter to your liking:
 
-```json
+```JSON
 "instanceCount": {
             "value": "4"
         },
@@ -52,7 +52,7 @@ I won't go through the template line-by-line, but I do want to call out some imp
 
 - The template is currently set to use [`Standard_NV6`](https://docs.microsoft.com/en-us/azure/virtual-machines/nv-series) VMs for the VMSS instances:
 
-```json
+```JSON
 "instanceSize": {
             "value": "Standard_NV6"
         },
@@ -60,7 +60,7 @@ I won't go through the template line-by-line, but I do want to call out some imp
 
 As the link indicates, these use GPUs and, to crunch the most numbers when doing those folding calculations, you need to use something that offloads the processing to a GPU.  To go along with the VM `instanceSize`, you can also specify a `priority`:
 
-```json
+```JSON
 "priority": {
             "value": "Regular"
         },
@@ -70,7 +70,7 @@ If you wanted to try and use Azure Spot VMs as mentioned a few paragraphs ago, y
 
 - There are several places in the parameters file, where you'll need to substitute `<insert your subscription id here>` with your actual subscription value.  For example, when specifying the `virtualNetworkId`, you'll need to use a valid subscription value:
 
-```json
+```JSON
 "virtualNetworkId": {
             "value": "/subscriptions/<insert your subscription id here>/resourceGroups/FoldingAtHomeRG/providers/Microsoft.Network/virtualNetworks/FoldingAtHomeRG-vnet"
         },
@@ -78,7 +78,7 @@ If you wanted to try and use Azure Spot VMs as mentioned a few paragraphs ago, y
 
 - As mentioned above and per security best practices, an NSG is deployed and associated at the subnet level.  This way any devices deployed to that subnet are governed by the same rules.  It's a much more scalable approach than trying to associate these with each VM's NIC, even if we are using an ARM template to automate the deployment.  Much as with the subscription id, you'll need to substitute valid values for your public source IP for the NSG definitions:
 
-```json
+```JSON
 "rules": [
                         {
                             "name": "SSH",
@@ -121,7 +121,7 @@ The NSG rules allow SSH and RDP traffic originating from *only* your public sour
 
 The username of the administration account is set to be `foldingadmin`:
 
-```json
+```JSON
 "adminUsername": {
             "value": "foldingadmin"
         },
@@ -139,7 +139,7 @@ Obviously, you can customize this to be whatever you like.  Since we're using SS
 
 - The OS choice is actually set in the template and not in the parameters file.  Take a look:
 
-```json
+```JSON
 "virtualMachineProfile": {
                     "storageProfile": {
                         "osDisk": {
@@ -161,7 +161,7 @@ You can see here that we're creating this from an image and with the `18.04-LTS`
 
 - The creation and association of a public IP for each instance is handled in the template under the `networkProfile` section:
 
-```json
+```JSON
 "networkProfile": {
                         "copy": [
                             {
@@ -188,7 +188,7 @@ You can see here that we're creating this from an image and with the `18.04-LTS`
 
 If memory serves, the `publicIPAddressConfiguration` key basically just has to be set to a valid name, which we're supplying in the parameters file for `pipName`:
 
-```json
+```JSON
 "networkInterfaceConfigurations": {
             "value": [
                 {
@@ -206,7 +206,7 @@ If memory serves, the `publicIPAddressConfiguration` key basically just has to b
 ```
 
 - Last, but not least for the template, you'll see where I tried to use the same tag `folding@home` for all of the associated resources:
-```json
+```JSON
 "tags": {
                 "application": "folding@home"
             }
