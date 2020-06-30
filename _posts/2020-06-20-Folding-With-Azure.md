@@ -5,12 +5,11 @@ description: How to help fight COVID-19 with your spare Azure resources
 author: Brian Davis
 categories: how-to 
 tags: folding@home
-date: 2020-06-20
+date: 2020-06-30
 comments: true
 published: true
 ---
 
-## Table Of Contents
  1. **Introduction**
  2. **ARM template**
  3. **Azure CLI deployment**
