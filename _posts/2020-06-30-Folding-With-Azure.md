@@ -7,7 +7,7 @@ categories: how-to
 tags: folding@home
 date: 2020-06-30
 comments: true
-published: false
+published: true
 ---
 
  1. **Introduction**
