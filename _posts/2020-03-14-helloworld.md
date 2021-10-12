@@ -19,4 +19,4 @@ This is my first post!
 
 Embed a YouTube URL:
 
-https://www.youtube.com/watch?v=cX30jxMNBUw
+[![IMAGE_ALT](https://img.youtube.com/vi/UmX4kyB2wfg/0.jpg)](https://www.youtube.com/watch?v=UmX4kyB2wfg)
